@@ -8,6 +8,7 @@ class Reader
     static void Main(string[] args)
     {
         Reader.readXLS(ConfigurationManager.AppSettings["filepath"]);
+        DbHelper.StartDb();
     }
     static public void readXLS(string FilePath)
     {
