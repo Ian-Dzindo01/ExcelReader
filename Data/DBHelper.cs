@@ -12,12 +12,11 @@ public class DbHelper
         {
             connection.Open();
 
-            // Drop the database if it exists
+            // Drop table if it exists
             string dropTableQuery = $"DROP TABLE IF EXISTS people_info";
             connection.Execute(dropTableQuery);
 
             Console.WriteLine($"Table people_info deleted successfully.");
-
             Console.WriteLine("Creating new table...");
             
             connection.Execute(@"
@@ -29,7 +28,6 @@ public class DbHelper
                 )");    
 
             connection.Close();
-
             Console.WriteLine("Table successfuly created. Connection closed;");
         }
     }
