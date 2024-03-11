@@ -12,9 +12,9 @@ class Reader
         var people = readXLS(filepath);
         DbHelper.StartDb();
         PopulateDb(people);
+        OutputHelper.PrintTable(people);
     }
 
-    // Create a list of classes from the excel sheet data
     static public List<Person> readXLS(string FilePath)
     {   
         Console.WriteLine("Reading in data...\n");

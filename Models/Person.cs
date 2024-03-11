@@ -1,4 +1,3 @@
-[Dapper.Contrib.Extensions.Table("people_info")]
 public class Person
 {
     public string FirstName { get; set; }
