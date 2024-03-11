@@ -1,4 +1,3 @@
-using System;
 using OfficeOpenXml;
 using System.Configuration;
 using Microsoft.Data.Sqlite;
@@ -14,9 +13,12 @@ class Reader
         DbHelper.StartDb();
         PopulateDb(people);
     }
+
     // Create a list of classes from the excel sheet data
     static public List<Person> readXLS(string FilePath)
-    {
+    {   
+        Console.WriteLine("Reading in data...\n");
+
         FileInfo existingFile = new FileInfo(FilePath);
         ExcelPackage package = new ExcelPackage(existingFile);
         ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
@@ -33,12 +35,16 @@ class Reader
 
                 people.Add(new Person{FirstName=FirstName, LastName=LastName, Age=Age});
             }
-        
+
+        Console.Write("Converting to classes...\n");
         return people;
     }   
+
     // MAKE THIS INDEPENDENT OF NUMBER OF COLUMNS.
     static void PopulateDb(List<Person> people)
-    {
+    {   
+        Console.WriteLine("Populating database...\n");
+
         using (var connection = new SqliteConnection(connectionString))
         {
             connection.Open();
@@ -51,5 +57,6 @@ class Reader
 
                 connection.Close();
         }
+        Console.WriteLine("Data successfully inserted into database.\n");
     }
 }

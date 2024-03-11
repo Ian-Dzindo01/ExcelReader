@@ -16,8 +16,9 @@ public class DbHelper
             string dropTableQuery = $"DROP TABLE IF EXISTS people_info";
             connection.Execute(dropTableQuery);
 
-            Console.WriteLine($"Table people_info deleted successfully.");
-            Console.WriteLine("Creating new table...");
+            Console.WriteLine($"Previous table people_info deleted successfully.\n");
+
+            Console.WriteLine("Creating new table...\n");
             
             connection.Execute(@"
                 CREATE TABLE IF NOT EXISTS people_info (
@@ -28,7 +29,7 @@ public class DbHelper
                 )");    
 
             connection.Close();
-            Console.WriteLine("Table successfuly created. Connection closed;");
+            Console.WriteLine("Table successfuly created. Connection closed.\n");
         }
     }
 }
